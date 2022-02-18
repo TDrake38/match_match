@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid')
     const resultDisplay = document.querySelector('#result')
-    const cardsChosen = []
-    const cardsChosenId = []
-    const cardsWon = []
+    let cardsChosen = []
+    let cardsChosenId = []
+    let cardsWon = []
 
     //create your board
     function createBoard() {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let card = document.createElement('img')
             card.setAttribute('src', 'images/MMCard_back.png')
             card.setAttribute('data-id', i)
-            card.addEventListener('click', flipcard)
+            card.addEventListener('click', flipCard)
             grid.appendChild(card)
         }
     }
@@ -77,17 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Match!!')
+            //TODO: change the alert to something else 
+            //alert('Match!!')
             cards[optionOneId].setAttribute('src', 'images/MMCard_blank.png')
             cards[optionTwoId].setAttribute('src', 'images/MMCard_blank.png')
             cardsWon.push(cardsChosen)
         } else {
             cards[optionOneId].setAttribute('src', 'images/MMCard_back.png')
             cards[optionTwoId].setAttribute('src', 'images/MMCard_back.png')
-            alert('Sorry, try again!')
+            //TODO: change the alert to something else 
+            //alert('Sorry, try again!')
         }
-        //cardsChosen = []
-        //cardsChosenId = []
+        cardsChosen = []
+        cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
         if (cardsWon.length === cardArray.length/2) {
             resultDisplay.textContent = 'Congrats, you got em all!!'
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //flip the card
-    function flipcard() {
+    function flipCard() {
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
