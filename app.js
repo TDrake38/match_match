@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    //TODO: Design and upload better cards
     //card option
     const cardArray = [
         {
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsChosenId = []
     let cardsWon = []
 
+    //TODO: Make grid bigger/center
     //create your board
     function createBoard() {
         for ( let i = 0; i < cardArray.length; i++) {
